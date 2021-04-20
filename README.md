@@ -5,6 +5,9 @@
 Development of a blog with Django, where we have the main posts, create, edit and delete any post and can also search for a post.
 The user can also leave comments on the posts.
 <h2>Layout</h2>
+
+  <a href="./assets">Blog Images</a>
+
 <h2>How to run this repo: 🚀</h2>
 
 ```bash
