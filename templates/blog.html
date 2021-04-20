@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  
+
+    <div class="container blog-container mt-5">
+        <div class="row">
+            <main class="col-lg-8">
+                <div class="row">
+                {% for post in queryset  %}
+                  
+                    <div class="col-xl-6">
+                        <div class="post-thumbnail mt-5">
+                            <img src="{{post.thumbnail_picture.url}}" class="img-post" alt="">
+                        </div>
+                        <div class="post-details">
+                            <div class="d-flex justify-content-between">
+                                <div class="category">
+                                    {% for cat in post.categories.all  %}
+ 
+                                    <a href="#">{{cat}}</a>
+                                      
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="post-title mt-3">
+                                <a href="{{post.get_absolute_url}}">
+                                    <h2>{{post.title}}</h2>
+                                </a>
+                            </div>
+                            <p>{{post.overview}}</p>
+                        </div>
+                        <footer class="post-footer d-flex align-items-center">
+                            <a href="{{post.get_absolute_url}}" class="d-flex align-items-center">
+                                <div class="avatar">
+                                    <img src="{{post.author.profile_picture.url}}" alt="">
+                                </div>
+                                <div class="post-author">
+                                    <h3>{{post.author}}</h3>
+                                </div>
+                            </a>
+                            <div class="date"><i class="far fa-clock"></i>{{post.timestamp | timesince}} ago</div>
+                            <div class="post-comment"><i class="far fa-comment-alt"></i>{{post.comment_count}}</div>
+                        </footer>                 
+                    </div>
+
+                {% endfor %}
+                    
+                </div>
+                <nav class="page-navigation mt-5 mb-5">
+                    <ul class="d-flex justify-content-center">
+                        {% if queryset.has_previous %}
+                        <li class="page-item"><a href="?{{page_request}}={{queryset.previous_page_number}}" class="page-link"> <i class="fas fa-angle-left teste"></i></a></li>
+                        <li class="page-item"><a href="#" class="page-link">{{queryset.previous_page_number}}</a></li>
+                        {% endif %}                            
+                        <li class="page-item"><a href="." class="page-link active">{{queryset.number}}</a></li>
+                        
+                        {% if queryset.has_next %}
+                        <li class="page-item"><a href="#" class="page-link">{{queryset.next_page_number}}</a></li>
+
+                        <li class="page-item"><a href="?{{page_request}}={{queryset.next_page_number}}" class="page-link"> <i class="fas fa-angle-right"></i></a></li>
+                        {% endif %}                            
+                    </ul>
+                </nav>
+            </main>
+
+        {% include 'aside.html'  %}
+
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,276 @@
+:root{
+    --color : #166fe5;
+    --transition: all 0.3s ease;
+}
+*,
+::after,
+::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+}
+.header{
+    background: #000;    
+}
+.brand{
+    color: var(--color);
+    font-size: 24px;
+}
+.input-form-search{
+    width: 0;
+    visibility: hidden;
+    padding-left: 10px;
+    margin-left: 15px;
+    outline-style: none;
+}
+.search-form .input-form-search{
+    visibility: initial;
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+}
+.hidden-search{
+    visibility: hidden;
+    height: 0;
+}
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.nav-toggle {
+    font-size: 1.5rem;
+    color: var(--color);
+    background: transparent;
+    border-color: transparent;
+    transition: var(--transition);
+    cursor: pointer;
+}
+.nav-toggle:hover {
+    color: #1da64d;
+    transform: rotate(90deg);
+}  
+.fa-search{
+    font-size: 22px;
+    color: var(--color);
+    padding-left: 15px;
+    padding-top: 10px;
+}
+.links a {
+    color: var(--color);
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+}
+.links a:hover {
+    background: var(--clr-primary-8);
+    color: #1da64d;
+    padding-left: 1.5rem;
+}
+.links {
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+.show-links {
+    height: 12rem;
+}
+
+.banner{
+    height: 90vh;
+}
+
+.banner-title{
+    color: #1da64d;
+    padding-top: 120px;
+    padding-left: 15px;
+    font-weight: bolder;
+}
+.banner-link{
+    color: #1da64d;
+    padding-top: 120px;
+    padding-left: 15px;
+}
+
+.avatar img{
+    height: 60px;
+    border-radius: 50%;
+}
+.post-author h3{
+    font-size: 18px;
+    padding-left: 10px;
+}
+.date,.post-comment{
+    padding-left: 10px;
+    font-size: 14px;
+}
+.fa-clock,.fa-comment-alt{
+    padding:0 10px;
+}
+.img-post{
+    width: 300px;
+    height: 250px;
+    margin-bottom: 5px;
+}
+.post-content{
+    padding: 10px;
+}
+.divider{
+    height: 80vh;
+}
+.subscribe-field{
+    display: flex;
+    flex-direction: column;
+}
+.input-subscribe{
+    width: 90%;
+    height: 40px;
+    padding-left: 10px;
+}
+.btn-subscribe{
+    margin-top: 10px;
+    width: 90%;
+    height: 40px;
+    background: #1da64d;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+}
+.footer{
+    margin-top: 60px;
+    background: #252525;
+    padding: 20px;
+    color: #fff;
+}
+.page-item{
+    padding-right: 10px;
+}
+.input-search{
+    width: 90%;
+    height: 30px;
+    padding-left: 10px;
+
+}
+.search{
+    width: 90%;
+    height: 30px;
+    margin-top: 10px;
+    background: #1da64d;
+    color: #fff;
+    font-weight: bolder;
+    border: none;
+}
+.img-blog-post{
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+}
+.fa-eye{
+    margin:0 10px;
+}
+.img-poster{
+    width: 95%;
+}
+.poster{
+    display: flex;
+    flex-direction: column;
+}
+.poster-footer{
+    display: flex;
+
+}
+.active{
+    background: #EEEEEE;
+    color: #252525;
+}
+.fa-angle-left{
+    padding-right: 10px;
+}
+.fa-angle-right{
+    padding-left: 10px;
+}
+.img-comment{
+    height: 50px;
+    margin-right: 10px;
+}
+.comment-body{
+    margin-left: 60px;
+}
+
+@media screen and (min-width: 800px) {
+    .nav-center {
+        max-width: 1170px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+      }
+    .nav-header {
+        padding: 0;
+     }
+    .nav-toggle {
+        display: none;
+    }
+    .links {
+        height: auto;
+        display: flex;
+    }
+    .links a {
+        padding: 0;
+        margin: 0 0.5rem;
+    }
+    .links a:hover {
+        padding: 0;
+        background: transparent;
+    }
+    .divider{
+        height: 30vh;
+    }
+    .subscribe-field{
+        flex-direction: row;
+        
+    }
+    .input-subscribe{
+        width: 40%;
+    }
+    .btn-subscribe{
+        width: 10%;
+        position: relative;
+        bottom: 10px;
+    }
+    .input-search{
+        width: 70%;
+        margin-top: 10px;
+    }
+    .search{
+        position: absolute;
+        width: 5%;
+        height: 28px;
+        padding: 0 5px;       
+    }
+    .poster{
+        flex-direction: row;
+    }
+    .hidden-search{
+        visibility: hidden;
+        display: none;
+    }
+    .date,.post-comment{
+        padding-left: 10px;
+        font-size: 16px;
+    }
+    .img-poster{
+        width: 80%;
+    }
+}

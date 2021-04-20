@@ -1,0 +1,39 @@
+<header class="header">
+    <nav>
+      <div class="nav-center">
+        <!-- nav header -->
+        <div class="nav-header">
+            <h3 class="brand"><a href="/">SMarkus</a></h3>
+            <button class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <!-- links -->
+        <ul class="links">
+          <li>
+             <a href="/">home</a>
+          </li>
+          <li>
+             <a href="/blog">blog</a>
+          </li>
+          
+          {% if request.user.is_staff %}
+                        
+          <li>
+             <a href="{% url 'post-create' %}" >create</a>
+          </li>
+          {% endif %}
+
+          <li>
+              <div class="search-area">
+                  <form action="{% url 'search' %}">
+                      <input class="input-form-search" type="search" placeholder="What are you looking for?" name="q" id="search">
+                      <i class="fas fa-search btn-search"></i>
+                  </form>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+</header>

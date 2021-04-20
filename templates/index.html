@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Banner Section -->
+    <section class="banner" style="background: url({% static 'img/tech.jpg'%}); background-size: cover; background-position: center center">
+        <div class="container"> 
+            <div class="banner-info"><h1 class="banner-title">Um blog sobre programação.</h1></div>
+            <div class="banner-link">
+                <a href="#intro" >Discover More</a>
+            </div>
+         </div>
+    </section>
+  
+    <!-- Intro Section -->
+    <section class="intro" id="intro">
+        <div class="container mt-5">
+            <h2>Blog Tech</h2>
+            <p>Desenvolvi esse blog no intuito de ajudar aqueles que também estão começando na área da programação e também para relatar o meu desenvolvimento pessoal.</p>
+            <p>Meus estudos estão focados em aplicações backend, mas também estudo um pouco do frontend,
+            para ter uma ideia geral de todos os processos da aplicação.</p>
+            <p>Esse blog foi desenvolvido em Django/Python,  HTML5, CSS3 e Vanilla JS. </p>
+            <p>É uma versão inicial que aos poucos será aprimorada.</p>
+        </div>
+    </section>
+  
+      <!-- Posts Section -->
+      <section class="posts mt-5">
+          <div class="container">
+              <!-- post -->
+              {% for obj in queryset  %}
+                
+              <div class="row d-flex align-items-stretch">
+                  <div class="col-lg-7 d-flex align-items-center">
+                      <div class="post-content">
+                          <header class="post-header">
+                              <div class="category">
+                                  {% for cat in obj.categories.all  %}
+                                    
+                                  <a href="#">{{cat}}</a>
+                                  {% endfor %}
+
+                              </div>
+                              <div class="post-title">
+                                  <a href="{{obj.get_absolute_url}}">
+                                      <h2>{{obj.title}}</h2>
+                                  </a>
+                              </div>
+                              <p>{{obj.overview}}</p>
+                          </header>
+                          <footer class="post-footer d-flex align-items-center">
+                              <a href="{{obj.get_absolute_url}}" class="d-flex align-items-center">
+                                  <div class="avatar">
+                                      <img src="{{obj.author.profile_picture.url}}" alt="">
+                                  </div>
+                                  <div class="post-author">
+                                      <h3>{{obj.author}}</h3>
+                                  </div>
+                              </a>
+                              <div class="date"><i class="far fa-clock"></i></i>{{obj.timestamp | timesince}} ago</div>
+                              <div class="post-comment"><i class="far fa-comment-alt"></i>{{obj.comment_count}}</div>
+                          </footer>
+                      </div>
+                  </div>
+                  <div class="image col-lg-5 mt-5">
+                      <img class='img-post' src="{{obj.thumbnail_picture.url}}" alt="">
+                  </div>
+              </div>
+
+              {% endfor %}
+          </div>
+      </section>
+  
+      <!-- Divider Section -->
+      <section class="divider mt-5"  style="background: url({% static 'img/14952.jpg'%}); background-size: cover; background-position: center center">
+         <h2 class="container">Something more here</h2>
+      </section>
+  
+      <!-- Latest Posts -->
+      <section class="latest-post">
+          <div class="container mt-5">
+              <header>
+                  <h2>Newsletter</h2>
+                  <p>Aqui estão os mais novos estudos realizados</p>
+              </header>                
+              <div class="row">
+                {% for obj in latest %}
+
+                    <div class="col-md-4">
+                      <div class="post-thumbnail mt-3">
+                          <img src="{{obj.thumbnail_picture.url}}" class="img-post" alt="">
+                      </div>
+                      <div class="post-details">
+                          <div class="d-flex justify-content-between">
+                              <div class="category">
+                                  {% for cat in obj.categories.all  %}
+                                    
+                                  <a href="#">{{cat}}</a>
+                                  {% endfor %}
+
+                              </div>
+                          </div>
+                          <div class="post-title mt-3">
+                              <a href="{{obj.get_absolute_url}}">
+                                  <h2>{{obj.title}}</h2>
+                              </a>
+                          </div>
+                          <p>{{obj.overview}}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+
+              </div>
+          </div>
+      </section>
+  
+      <!-- Subscribe Section -->
+      <section class="subscribe mb-5">
+          <div class="container">
+              <h2 class="mt-5">Subscribe to Newsletter</h2>
+              <p>Receba primeiro os novos posts
+              </p>
+              <form action="." method="POST"> {% csrf_token %}
+                <div class="subscribe-field">
+                  <input type="email" class="input-subscribe" placeholder="Type your email address" name="email" id="email">
+                  <button type="submit" class="btn-subscribe">Subscribe</button>
+                </div>
+              </form>
+          </div>
+      </section>
+  
+
+{% endblock content %}

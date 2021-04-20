@@ -1,0 +1,54 @@
+<aside class="col-lg-4">
+    <!-- Search the blog -->
+    <section class="blog-search container mb-5">
+        <h4 class="mb-4">Search the blog</h4>
+        <div class="search-field mb-5">
+            <form action="{% url 'search' %}">
+                <input type="text" class="input-search mt-2" placeholder="What are you looking for?" name="q" id="">
+                <button class="search">Search</button>
+            </form>
+        </div>
+    </section>
+    <!-- Latest Posts -->
+    <section class="aside-post container mt-5">
+        <h4 class="mb-4">Latest Posts</h4>
+        <div class="row">
+            {% for post  in most_recent  %}
+              
+            <a href="{{post.get_absolute_url}}">
+                <div class="item-post d-flex align-items-center mb-2">
+                    <div><img src="{{post.thumbnail_picture.url}}" alt="..." class="img-fluid img-blog-post"></div>
+                    <div class="title-post"><strong>{{post.title}}</strong>
+                    <div class="d-flex align-items-center">
+                        <div class="views"><i class="fas fa-eye"></i>{{post.view_count}}</div>
+                        <div class="comments"><i class="far fa-comment-alt"></i>{{post.comment_count}}</div>
+                    </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+    </section>
+    <!-- Categories -->
+    <section class="post-category container mb-5 mt-5">
+        <h4 class="mb-3">Categories</h4>
+        {% for cat in category_count  %}
+          
+        <div class="item d-flex justify-content-between"><a href="#">{{cat.categories__title}}</a><span>{{cat.categories__count}}</span></div>
+
+        {% endfor %}
+
+    </section>
+    <!-- Tags -->
+    <section class="tags container">
+        <h4 class="mb-3">Tags</h4>
+        {% for cat in category_count  %}
+
+        <ul class="list-inline mt-">
+            <li class="list-inline-item"><a href="#" class="tag">#{{cat.categories__title}}</a></li>
+        {% endfor %}
+
+        </ul>
+    </section>
+</aside>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<h2 class="container mt-5 ">Results</h2>
+
+{% for result in queryset  %}
+  <div class="container" >
+    <a href="{{result.get_absolute_url}}">
+        {{result.title}}
+    </a><br>
+  </div>
+  
+  {% endfor %}
+{% endblock content %}
+
